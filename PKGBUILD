@@ -2,7 +2,7 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 pkgname=kvantum-qt5
-pkgver=0.15.3
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="SVG-based theme engine for Qt5 (including config tool and extra themes)"
 arch=(x86_64)
