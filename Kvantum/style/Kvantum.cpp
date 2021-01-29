@@ -9947,18 +9947,9 @@ void Style::drawControl(QStyle::ControlElement element,
                 }
                 if (txtSize.width() > availableSize.width())
                 {
-                  lspec.boldFont = false;
                   if (tialign == Qt::ToolButtonTextUnderIcon)
                   {
                     lspec.left = lspec.right = 0;
-                    fspec.left = fspec.right = 0;
-                  }
-                  else if (QCoreApplication::applicationName() != "lxqt-panel" // not a task button
-                           && txtSize.width() <= availableSize.width()
-                                                 + fspec.left + fspec.right
-                                                 + lspec.left + lspec.right + lspec.tispace)
-                  {
-                    lspec.left = lspec.right = lspec.tispace = 0;
                     fspec.left = fspec.right = 0;
                   }
                   else // If the text is beside the icon but doesn't fit in,...
@@ -9982,20 +9973,10 @@ void Style::drawControl(QStyle::ControlElement element,
                 }
                 if (txtSize.width() > availableSize.width())
                 {
-                  lspec.boldFont = false;
-                  if (QCoreApplication::applicationName() != "lxqt-panel" // not a task button
-                      && txtSize.width() <= availableSize.width() + fspec.left + fspec.right
-                                                                  + lspec.left + lspec.right)
-                  {
-                    lspec.left = lspec.right = 0;
-                    fspec.left = fspec.right = 0;
-                  }
-                  else // again, elide the text if it doesn't fit in
-                  {
-                    QFontMetrics fm(painter->font());
-                    txt = fm.elidedText(txt, Qt::ElideRight,
-                                        availableSize.width(), Qt::TextShowMnemonic);
-                  }
+                  // again, elide the text if it doesn't fit in
+                  QFontMetrics fm(painter->font());
+                  txt = fm.elidedText(txt, Qt::ElideRight,
+                                      availableSize.width(), Qt::TextShowMnemonic);
                 }
               }
             }
